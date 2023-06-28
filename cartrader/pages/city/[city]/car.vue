@@ -1,15 +1,16 @@
 <script setup>
 const route = useRoute();  // 取得現在的路徑
+const {toTitleCase} = useUtilities()
 useHead({
     title: `${route.params.make ? toTitleCase(route.params.make) : "Cars"
   } in ${toTitleCase(route.params.city)}`,
 });
 
-function toTitleCase(str) {
-  return str.replace(/\w\S*/g,function(txt) {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-}
+// function toTitleCase(str) {
+//   return str.replace(/\w\S*/g,function(txt) {
+//       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+//     });
+// }
 definePageMeta({
     layout: "custom"
 })
