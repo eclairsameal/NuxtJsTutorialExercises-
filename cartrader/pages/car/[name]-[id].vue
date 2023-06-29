@@ -16,6 +16,13 @@ const car = computed(() => {
     })
 });
 
+if(!car.value) { // 如果沒有車子的資料的話，創建nuxt錯誤
+    throw createError({
+        statusCode: 404,
+        message: `Car with id of ${route.params.id} does not exist.`,
+    });
+}
+
 definePageMeta({
     layout: "custom"
 });

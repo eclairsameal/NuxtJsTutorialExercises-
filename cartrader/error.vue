@@ -1,7 +1,10 @@
 <script setup>
     const error = useError(); // useError是預設的，會提供我們錯誤對象或訊息
     const handleError = () =>{
-        navigateTo("/")
+        //navigateTo("/")
+        clearError({
+            redirect: "/",
+        });
     }
 
 </script>
