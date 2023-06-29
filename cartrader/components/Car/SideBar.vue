@@ -10,8 +10,16 @@ const route = useRoute(); // 取得url路徑
 const updateModal = (key) => { // 將傳進來的key改變bool狀態
   modal.value[key] = !modal.value[key];
 }
+// "12345" = 12345
+// "houston" = NaN
 const onChangeLocation = () => {
   if (!city.value) return; // 沒有city資料的話
+  if (!isNaN(parseInt(city.value))){
+    throw createError({
+      statusCode: 400,
+      message: "Invalid city format"
+    });
+  };
   updateModal("location");
   navigateTo(`/city/${city.value}/car/${route.params.make}`);
   city.value = "";
